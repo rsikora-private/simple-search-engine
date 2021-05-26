@@ -1,12 +1,13 @@
 package pl.robertsikora.simplesearch;
 
+import static pl.robertsikora.simplesearch.engine.SimpleSearchEngine.createSimpleSearchEngine;
+
 import java.io.File;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import pl.robertsikora.simplesearch.engine.SearchQuery;
-import pl.robertsikora.simplesearch.engine.SimpleSearchEngine;
 
 public class ConsoleApp {
 
@@ -24,7 +25,7 @@ public class ConsoleApp {
 
     static void doConsoleSearch(final String directory, final InputStream in, final PrintStream out) {
 
-        final var simpleSearchEngine = new SimpleSearchEngine();
+        final var simpleSearchEngine = createSimpleSearchEngine();
 
         simpleSearchEngine.indexDirectory(new File(directory));
 

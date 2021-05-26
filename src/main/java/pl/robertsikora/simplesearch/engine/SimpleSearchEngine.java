@@ -19,8 +19,19 @@ public class SimpleSearchEngine {
 
     private static final Logger LOGGER = new Logger();
 
-    private final WordIndexer wordIndexer = simpleIndexer();
-    private final RankingCalculator rankingCalculator = simpleRankingCalculator(wordIndexer);
+    private final WordIndexer wordIndexer;
+    private final RankingCalculator rankingCalculator;
+
+    public SimpleSearchEngine(WordIndexer wordIndexer,
+        RankingCalculator rankingCalculator) {
+        this.wordIndexer = wordIndexer;
+        this.rankingCalculator = rankingCalculator;
+    }
+
+    public static SimpleSearchEngine createSimpleSearchEngine() {
+        final var indexer = simpleIndexer();
+        return new SimpleSearchEngine(indexer, simpleRankingCalculator(indexer));
+    }
 
     public void indexDirectory(final File directory) {
         requireNonNull(directory, "directory is required!");

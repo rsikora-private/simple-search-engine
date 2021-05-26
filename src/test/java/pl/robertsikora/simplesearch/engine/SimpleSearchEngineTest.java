@@ -2,6 +2,7 @@ package pl.robertsikora.simplesearch.engine;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static pl.robertsikora.simplesearch.engine.SimpleSearchEngine.createSimpleSearchEngine;
 
 import java.io.File;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ class SimpleSearchEngineTest {
 
     private static final String DIRECTORY_PATH = "src/test/resources";
 
-    private final SimpleSearchEngine underTest = new SimpleSearchEngine();
+    private final SimpleSearchEngine underTest = createSimpleSearchEngine();
 
     @Test
     void shouldThrowExceptionWhenGivenDirectoryDoesNotExists() {
